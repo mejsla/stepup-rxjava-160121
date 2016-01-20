@@ -13,6 +13,7 @@ Det som behövs är: Git, Java 8 och Maven
 
 
 ## Resurser
-[The Observable Contract](http://reactivex.io/documentation/contract.html)
-[Documenation Observable.create()](http://reactivex.io/documentation/operators/create.html)
-[RXJava JavaDoc](http://reactivex.io/RxJava/javadoc/)
+[The Observable Contract](http://reactivex.io/documentation/contract.html)  
+[Documenation Observable.create()](http://reactivex.io/documentation/operators/create.html)  
+[RXJava JavaDoc](http://reactivex.io/RxJava/javadoc/)  
+[Reactive Streams](http://www.reactive-streams.org/)  
