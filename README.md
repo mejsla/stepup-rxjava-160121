@@ -10,3 +10,7 @@ Det som behövs är: Git, Java 8 och Maven
    `mvn clean install`
 3. Kör däreter:
    `java -cp target/rx-java-stepup-1.0-SNAPSHOT-jar-with-dependencies.jar se.mejsla.stepup.rxjava.HelloWorld`
+
+
+## Resurser
+[The Observable Contract](http://reactivex.io/documentation/contract.html)
