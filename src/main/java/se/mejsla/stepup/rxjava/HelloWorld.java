@@ -15,9 +15,9 @@ public class HelloWorld {
         });
         // Replace with lambda
 
-//        Subscription subscription = Observable.just("World", "Kristofer")
-//                .subscribe(str -> {
-//                    System.out.println("Hello " + str);
+//        Subscription subscription = Observable.just("Oskar", "Kristofer")
+//                .subscribe(element -> {
+//                    System.out.println("Hello " + element);
 //                }, throwable -> {
 //                    System.out.println("Something went horribly wrong");
 //                }, () -> {
