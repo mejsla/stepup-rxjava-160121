@@ -1,6 +1,7 @@
 package se.mejsla.stepup.rxjava.lab2;
 
 import rx.Observable;
+import rx.Subscriber;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,13 +21,26 @@ public class MyObservableFactory {
      *
      * @param suppliers - the sources of values for this Observable to emit to its subscribers.
      * @param <T>       type of values emitted by the returned Observable
-     * @return an {@link Observable<T>} that emits the values
-     * provided by the suppliers.
+     * @return
      */
-    public static <T> Observable<T> fromSuppliers(final Collection<Supplier<T>> suppliers) {
-        // TODO: Implement me. Maybe using Observable.create()....
-        return Observable.empty();
+    public static <T> Observable<T> fromSuppliers(final Collection<Supplier<T>>suppliers) {
+        return Observable.create(new Observable.OnSubscribe<T>() {
+            @Override
+            public void call(Subscriber<? super T> subscriber) {
+                for (Supplier<T> supplier : suppliers) {
+                    final T t;
+                    try {
+                        t = supplier.get();
+                    } catch (Throwable e) {
+                        subscriber.onError(new VerySpecialException(e));
+                        return;
+                    }
+                    subscriber.onNext(t);
+                }
+                subscriber.onCompleted();
 
+            }
 
+        });
     }
 }

@@ -14,7 +14,11 @@ public class ObservableUtils {
      * @return an observable of strings that follows the pattern of https://en.wikipedia.org/wiki/Fizz_buzz
      */
     public static Observable<String> fizzBuzzObservable(ConnectableObservable<Long> longObservable) {
-        return Observable.empty();
+        return Observable.merge(
+                longObservable.filter(l -> l % 3 == 0 && l % 5 == 0).map(l -> "FizzBuzz"),
+                longObservable.filter(l -> l % 3 != 0 && l % 5 == 0).map(l -> "Buzz"),
+                longObservable.filter(l -> l % 3 == 0 && l % 5 != 0).map(l -> "Fizz"),
+                longObservable.filter(l -> l % 3 != 0 && l % 5 != 0).map(String::valueOf));
 
 
     }
@@ -27,6 +31,9 @@ public class ObservableUtils {
      * @param evens should emit all even integers that are emitted by the longObservable
      */
     public static void oddsAndEvens(Observable<Long> longObservable, Observer<Long> odds, Observer<Long> evens) {
+        longObservable.filter(l -> l % 2 == 1).subscribe(odds);
+        longObservable.filter(l -> l % 2 == 0).subscribe(evens);
+
 
     }
 
