@@ -9,6 +9,6 @@ public class Accumulating {
      * @return an integer Observable where each value is multiplied with the preceding value/values.
      */
     public static Observable<Integer> multiply(Observable<Integer> integers) {
-        return Observable.error(new RuntimeException("Not Implemented"));
+        return  integers.scan((v1, v2) -> v1 * v2);
     }
 }

@@ -6,7 +6,7 @@ import rx.observables.GroupedObservable;
 public class Transformations {
 
     public static Observable<String> helloMap(Observable<String> name) {
-        return Observable.error(new RuntimeException("Not Implemented"));
+        return name.map(s -> "Hello " + s);
     }
 
     /**
@@ -17,7 +17,7 @@ public class Transformations {
      * with the {@code source} as staring point and {@code range} as the size of the integer range.
      */
     public static Observable<Integer> mapToRange(Observable<Integer> source, int range) {
-        return Observable.error(new RuntimeException("Not Implemented"));
+        return source.concatMap(start -> Observable.range(start, range));
     }
 
     /**
@@ -26,7 +26,7 @@ public class Transformations {
      * @return strings grouped by length (words are separated by a space)
      */
     public static Observable<GroupedObservable<Integer, String>> groupBySentenceLength(Observable<String> strings) {
-        return Observable.error(new RuntimeException("Not Implemented"));
+        return strings.groupBy(album -> album.split(" ").length);
     }
 
     /**
@@ -35,8 +35,6 @@ public class Transformations {
      * @return and Observable
      */
     public static Observable<Integer> sumOfAllEvenNumbers(Observable<Integer> integers) {
-        return Observable.error(new RuntimeException("Not Implemented"));
+        return integers.filter((i) -> i % 2 == 0).reduce((i1,i2)-> i1 + i2);
     }
-
-
 }
